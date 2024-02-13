@@ -1,0 +1,42 @@
+<main class="main">
+    <section class="block-input">
+        <article class="box">
+            <p>{{ error }}</p>
+            <section class="block-val" id="val01">
+                <input readonly type="text" name="formula" placeholder="0" [(ngModel)]="value" [value]="value">
+            </section>
+            <section class="block-val" id="val02">
+                <p>{{ total }} =</p>
+            </section>
+        </article>
+    </section>
+    <section class="block">
+        <button type="button" (click)="getConfig('CE')">CE</button>
+        <button type="button" (click)="getConfig('C')">C</button>
+        <button type="button" (click)="getConfig('DEL')">DEL</button>
+        <button type="button" (click)="addValues('/')">/</button>
+    </section>
+    <section class="block">
+        <button type="button" (click)="addValues('7')">7</button>
+        <button type="button" (click)="addValues('8')">8</button>
+        <button type="button" (click)="addValues('9')">9</button>
+        <button type="button" (click)="addValues('x')">x</button>
+    </section>
+    <section class="block">
+        <button type="button" (click)="addValues('4')">4</button>
+        <button type="button" (click)="addValues('5')">5</button>
+        <button type="button" (click)="addValues('6')">6</button>
+        <button type="button" (click)="addValues('-')">-</button>
+    </section>
+    <section class="block">
+        <button type="button" (click)="addValues('1')">1</button>
+        <button type="button" (click)="addValues('2')">2</button>
+        <button type="button" (click)="addValues('3')">3</button>
+        <button type="button" (click)="addValues('+')">+</button>
+    </section>
+    <section class="block">
+        <button type="button" (click)="addValues('0')">0</button>
+        <button type="button" (click)="addValues('.')">.</button>
+        <button type="button" (click)="getTotal()">=</button>
+    </section>
+</main>
