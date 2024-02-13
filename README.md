@@ -1,4 +1,4 @@
-# **To-Do-List**
+# **Calculator**
 
 [![NPM License](https://img.shields.io/npm/l/react)](https://github.com/katarine-bez-albuquerque/angular-calculator/blob/main/LICENSE)
 
