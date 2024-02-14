@@ -39,15 +39,15 @@ export class MainComponent implements OnInit {
   // Obtem dígitos
   // Get digits
   getValue():string {
-    // captura sinais duplicados
-    // capture duplicate signals
+    // Captura sinais duplicados e sinais diferentes juntos
+    // Captures duplicate signals and different signals together
     let v1 = this.value.indexOf("++");
     let v2 = this.value.indexOf("--");
     let v3 = this.value.indexOf("xx");
     let v4 = this.value.indexOf("//");
-    let v5 = this.value.indexOf("..");
+    let v5 = this.value.indexOf("..");    
 
-    let vv1 = this.value.indexOf("+-");    
+    let vv1 = this.value.indexOf("+-");
     let vv2 = this.value.indexOf("+x");
     let vv3 = this.value.indexOf("+/");
     let vv4 = this.value.indexOf("+.");
@@ -72,22 +72,29 @@ export class MainComponent implements OnInit {
     let vp3 = this.value.indexOf(".x");
     let vp4 = this.value.indexOf("./");
 
-    // Verifica se a primeira posição possui o sinal, se sim coloca vazio, ou se sinal está duplicado, se sim coloca o sinal 
-    // Checks if the first position has the sign, if yes, place it empty, or if the sign is duplicated, if yes, place the sign
+    /* 
+    * Verifica se a primeira posição possui o sinal, se sim coloca vazio,
+    * ou se sinal está duplicado, se sim coloca o sinal, 
+    * ou se o sinal está junto a outro sinal, se sim mantém o primeiro sinal selecionado.
+    *
+    * Checks if the first position has the sign, if so, leave it empty,
+    * or if the signal is duplicated, if yes, place the signal,
+    * or if the signal is next to another signal, if yes, keep the first signal selected.
+     */
     if (this.value[0] === '+' || this.value[v1] || this.value[vv1] || this.value[vv2] || this.value[vv3]  || this.value[vv4]) {
-      this.value = this.value.replace('+', '').substring(0, this.value.length - 2);
+      this.value = this.value.replace('+', '').replace(this.value[v1], '+').replace('-', '+').replace('x', '+').replace('/', '+').replace('.', '+');                                                     
     }
     if (this.value[0] === '-' || this.value[v2] || this.value[vm1] || this.value[vm2] || this.value[vm3]  || this.value[vm4]) {
-      this.value = this.value.replace('-', '').replace(this.value[v2], '-').substring(0, this.value.length - 2);
+      this.value = this.value.replace('-', '').replace(this.value[v2], '-').replace('+', '-').replace('x', '-').replace('/', '-').replace('.', '-');
     }
     if (this.value[0] === 'x' || this.value[v3] || this.value[vn1] || this.value[vn2] || this.value[vn3]  || this.value[vn4]) {
-      this.value = this.value.replace('x', '').replace(this.value[v3], 'x').substring(0, this.value.length - 2);
+      this.value = this.value.replace('x', '').replace(this.value[v3], 'x').replace('+', 'x').replace('-', 'x').replace('/', 'x').replace('.', 'x');
     }
     if (this.value[0] === '/' || this.value[v4] || this.value[vd1] || this.value[vd2] || this.value[vd3]  || this.value[vd4]) {
-      this.value = this.value.replace('/', '').replace(this.value[v4], '/').substring(0, this.value.length - 2);
+      this.value = this.value.replace('/', '').replace(this.value[v4], '/').replace('+', '/').replace('-', '/').replace('x', '/').replace('.', '/');
     }
     if (this.value[0] === '.' || this.value[v5] || this.value[vp1] || this.value[vp2] || this.value[vp3]  || this.value[vp4]) {
-      this.value = this.value.replace('.', '').replace(this.value[v5], '.').substring(0, this.value.length - 2);
+      this.value = this.value.replace('.', '').replace(this.value[v5], '.').replace('+', '.').replace('-', '.').replace('x', '.').replace('/', '.');
     }
     // Retorna o valor editado
     // Returns the edited value
